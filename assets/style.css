@@ -12,13 +12,30 @@ body {
     background-color: lightgray;
 }
 
-#formContent {
+h1, h2 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: bold;
+}
+
+main {
     background-color: white;
     border: solid darkgrey 2px;
     border-radius: 0.5rem;
     padding: 40px;
 }
 
-#generate {
+#generate, #copy {
     border-radius: 1.5rem;
+}
+
+@media (max-width: 575px) {
+    #generate, #copy {
+        border-radius: 0.5rem;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    h2 {
+        text-align: center;
+    }
 }
