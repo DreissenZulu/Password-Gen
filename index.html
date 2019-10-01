@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Password Generator</title>
-  </head>
-  <body>
-    <header>
-      <h1>Password Generator</h1>
+</head>
+
+<body>
+    <header class="container d-flex justify-content-center">
+        <h1>Password Generator</h1>
     </header>
-    <h2>Generate a Password</h2>
-    <textarea
-      readonly
-      id="password"
-      placeholder="Your Secure Password"
-      aria-label="Generated Password"
-    ></textarea>
-    <button id="generate">Generate Password</button>
-    <button id="copy">
-      Copy to Clipboard
-    </button>
-  </body>
+
+    <main class="container">
+        <h2>Generate a Password</h2>
+        <hr />
+        <div class="input-group">
+            <textarea class="form-control form-control-lg" readonly id="password" placeholder="Your Secure Password"
+                aria-label="Generated Password" rows="1"></textarea>
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" id="copy">
+                    Copy to Clipboard
+                </button>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-lg" id="generate">Generate Password</button>
+
+    </main>
+</body>
+
 </html>
