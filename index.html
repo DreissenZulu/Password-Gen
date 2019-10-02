@@ -57,15 +57,21 @@
     var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var numChar = "0123456789";
     var specChar = `!"#$%&'()*+,-./:;<=>?@[\]^_{|}~`;
+    var getPass = document.getElementById("password");
 
-    function makePassword (passLength) {
+    document.getElementById("generate").onclick = function makePassword () {
         var allChars = alphaLower + alphaUpper + numChar + specChar;
         var newPass = "";
-        for (var i = 0; i < passLength; i++) {
+        for (var i = 0; i < 9; i++) {
             newPass = newPass + allChars[Math.floor(Math.random()*allChars.length)];
         }
-        return newPass;
+        getPass.innerHTML = newPass;
     }
+
+    document.getElementById("copy").onclick = function copyClip () {
+        
+    }
+
 
 </script>
 </body>
