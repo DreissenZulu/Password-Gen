@@ -22,7 +22,7 @@
         <hr />
         <div class="input-group">
             <textarea class="form-control form-control-lg text-center" readonly id="password"
-                placeholder="Your Secure Password" aria-label="Generated Password" rows="3"></textarea>
+                placeholder="Your Totally Secure Password That I Definitely Won't Steal" aria-label="Generated Password" rows="3"></textarea>
             <div class="input-group-append">
 
             </div>
@@ -41,10 +41,33 @@
                 </button>
             </div>
         </div>
-
-
     </main>
 </div>
+
+<script>
+
+    var pastryPrefix = ["Strawberry", "Apple", "Banana","Blueberry","Raspberry","Chocolate Chip", 
+    "Cinnamon", "Walnut", "Peacan", "Almond", "Raisin", "Cream Cheese", "Whole Wheat", "Coconut",
+    "Inflatable", "Rubber", "Explosive", "Microwaved", "Inedible", "Petrified", "Ancient", "Chonky",
+    "Half-Eaten", "Illegal"];
+
+    var pastryPart1 = [];
+
+    var alphaLower = "abcdefghijklmnopqrstuvwxyz";
+    var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var numChar = "0123456789";
+    var specChar = `!"#$%&'()*+,-./:;<=>?@[\]^_{|}~`;
+
+    function makePassword (passLength) {
+        var allChars = alphaLower + alphaUpper + numChar + specChar;
+        var newPass = "";
+        for (var i = 0; i < passLength; i++) {
+            newPass = newPass + allChars[Math.floor(Math.random()*allChars.length)];
+        }
+        return newPass;
+    }
+
+</script>
 </body>
 
 </html>
