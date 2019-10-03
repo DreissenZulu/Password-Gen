@@ -30,12 +30,33 @@ document.querySelector("#formControlRange").oninput = updateLength;
 
 // The main event of this page. Generates a password based on parameters set once the Generate button is pressed
 document.querySelector("#generate").onclick = function makePassword() {
-    var allChars = alphaLower + alphaUpper + numChar + specChar;
+    // Empty the allChars array
+    var allChars = "";
     // Gets the length of the password from the slider
     var passLength = document.querySelector("#formControlRange").value;
     // Empty the previous password, if it exists
     var newPass = "";
 
+    // Check the options selected by the user, and apply the appropriate characters
+    if (document.querySelector("#chooseLower").checked) {
+        allChars += alphaLower;
+    } if (document.querySelector("#chooseUpper").checked) {
+        allChars += alphaUpper;
+    } if (document.querySelector("#chooseNums").checked) {
+        allChars += numChar;
+    } if (document.querySelector("#chooseSymb").checked) {
+        allChars += specChar;
+    }
+
+    // If no options are selected, warn user and end the function
+    if (allChars == "") {
+        document.querySelector("#passOptions").innerHTML = "You must select at least one option!";
+        document.querySelector("#passOptions").style.color = "red";
+        return;
+    } else {
+        document.querySelector("#passOptions").innerHTML = "Choose at least one option.";
+        document.querySelector("#passOptions").style.color = "black";
+    }
 
     // newPass is written randomly one character at a time for the length desired, based on the array of desired characters allChars
     for (var i = 0; i < passLength; i++) {
