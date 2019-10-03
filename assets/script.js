@@ -37,6 +37,11 @@ document.querySelector("#generate").onclick = function makePassword() {
     // Empty the previous password, if it exists
     var newPass = "";
 
+    // Check if a Bootstrap alert is active, and if it is, remove it from the DOM
+    if (document.querySelector("#alertBox") != undefined) {
+        document.querySelector("#alertBox").remove();
+    }
+
     // Check the options selected by the user, and apply the appropriate characters
     if (document.querySelector("#chooseLower").checked) {
         allChars += alphaLower;
@@ -50,12 +55,8 @@ document.querySelector("#generate").onclick = function makePassword() {
 
     // If no options are selected, warn user and end the function
     if (allChars == "") {
-        document.querySelector("#passOptions").innerHTML = "You must select at least one option!";
-        document.querySelector("#passOptions").style.color = "red";
+        alertUser();
         return;
-    } else {
-        document.querySelector("#passOptions").innerHTML = "Choose at least one option.";
-        document.querySelector("#passOptions").style.color = "black";
     }
 
     // newPass is written randomly one character at a time for the length desired, based on the array of desired characters allChars
@@ -65,6 +66,16 @@ document.querySelector("#generate").onclick = function makePassword() {
 
     // Sends the value of newPass to the textbox for copying
     getPass.innerHTML = newPass;
+}
+
+// Create a Bootstrap div with a warning message
+function alertUser() {
+    var formEl = document.querySelector("#passOptions").parentElement;
+    var newEl = document.createElement("div");
+    newEl.classList.add("alert", "alert-danger");
+    newEl.innerHTML = "You need at least one character type!";
+    newEl.setAttribute("id", "alertBox");
+    formEl.append(newEl);
 }
 
 // When the Copy button is clicked, sends the password in the text box to the clipboard
