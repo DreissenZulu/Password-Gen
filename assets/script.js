@@ -37,11 +37,6 @@ document.querySelector("#generate").onclick = function makePassword() {
     // Empty the previous password, if it exists
     var newPass = "";
 
-    // Check if a Bootstrap alert is active, and if it is, remove it from the DOM
-    if (document.querySelector("#alertBox") != undefined) {
-        document.querySelector("#alertBox").remove();
-    }
-
     // Check the options selected by the user, and apply the appropriate characters
     if (document.querySelector("#chooseLower").checked) {
         allChars += alphaLower;
@@ -53,10 +48,14 @@ document.querySelector("#generate").onclick = function makePassword() {
         allChars += specChar;
     }
 
-    // If no options are selected, warn user and end the function
+    // If no options are selected, create an alert box and end the function. Otherwise, remove the alert box from the DOM if it's there.
     if (allChars == "") {
-        alertUser();
+        if (document.querySelector("#alertBox") == undefined) {
+            alertUser();
+        }
         return;
+    } else if (document.querySelector("#alertBox") != undefined){
+        document.querySelector("#alertBox").remove();
     }
 
     // newPass is written randomly one character at a time for the length desired, based on the array of desired characters allChars
