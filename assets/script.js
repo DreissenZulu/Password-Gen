@@ -70,6 +70,6 @@ document.querySelector("#generate").onclick = function makePassword() {
 // When the Copy button is clicked, sends the password in the text box to the clipboard
 document.querySelector("#copy").onclick = function copyClip() {
     getPass.select();
-    getPass.setSelectionRange(0, getPass.length);
+    getPass.setSelectionRange(0, document.querySelector("#formControlRange").value);
     document.execCommand("copy");
 }
