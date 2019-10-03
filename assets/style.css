@@ -33,6 +33,15 @@ hr {
     border-width: 2px;
 }
 
+.custom-checkbox {
+    padding-left: 35px;
+}
+
+.col-md-3 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 @media (max-width: 575px) {
     #generate, #copy {
         border-radius: 0.3rem;
