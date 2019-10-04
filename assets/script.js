@@ -48,14 +48,22 @@ document.querySelector("#generate").onclick = function makePassword() {
         allChars += specChar;
     }
 
-    // If no options are selected, create an alert box and end the function. Otherwise, remove the alert box from the DOM if it's there.
+    // The old version of the conditional below which removed the alert box from the DOM completely.
+    // if (allChars == "") {
+    //     if (document.querySelector("#alertBox") == undefined) {
+    //         alertUser();
+    //     }
+    //     return;
+    // } else if (document.querySelector("#alertBox") != undefined){
+    //     document.querySelector("#alertBox").remove();
+    // }
+
+    // If no options are selected, show the alert box and end the function. Otherwise, hide the alert box.
     if (allChars == "") {
-        if (document.querySelector("#alertBox") == undefined) {
-            alertUser();
-        }
+        document.querySelector(".alert-danger").style = "display:block;"
         return;
-    } else if (document.querySelector("#alertBox") != undefined){
-        document.querySelector("#alertBox").remove();
+    } else {
+        document.querySelector(".alert-danger").style = "display:none;"
     }
 
     // newPass is written randomly one character at a time for the length desired, based on the array of desired characters allChars
@@ -67,15 +75,15 @@ document.querySelector("#generate").onclick = function makePassword() {
     getPass.innerHTML = newPass;
 }
 
-// Create a Bootstrap div with a warning message
-function alertUser() {
-    var formEl = document.querySelector("#passOptions").parentElement;
-    var newEl = document.createElement("div");
-    newEl.classList.add("alert", "alert-danger");
-    newEl.innerHTML = "You need at least one character type!";
-    newEl.setAttribute("id", "alertBox");
-    formEl.append(newEl);
-}
+// Create a Bootstrap div with a warning message. Unnecessary since we're hiding the box now.
+// function alertUser() {
+//     var formEl = document.querySelector("#passOptions").parentElement;
+//     var newEl = document.createElement("div");
+//     newEl.classList.add("alert", "alert-danger");
+//     newEl.innerHTML = "You need at least one character type!";
+//     newEl.setAttribute("id", "alertBox");
+//     formEl.append(newEl);
+// }
 
 // When the Copy button is clicked, sends the password in the text box to the clipboard
 document.querySelector("#copy").onclick = function copyClip() {

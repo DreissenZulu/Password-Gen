@@ -50,8 +50,10 @@ hr {
     margin-bottom: 0.5rem;
 }
 
+/* display:none hides the alert box to start */
 .alert-danger {
     margin-top: 15px;
+    display: none;
 }
 
 @media (max-width: 575px) {
