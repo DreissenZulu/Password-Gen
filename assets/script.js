@@ -15,14 +15,14 @@ var specChar = `!"#$%&'()*+,-./:;<=>?@[\]^_{|}~` + "`";
 // Define getPass as the text in the read-only text box
 var getPass = document.querySelector("#password");
 
-// Set the default value of the range, and also show the default value
-document.querySelector("#formControlRange").value = 12;
-updateLength();
-
 // Slider update function. Displays the value of the slider in the slider label
 function updateLength() {
     document.querySelector("#rangeValue").innerHTML = "Password Length: " + document.querySelector("#formControlRange").value;
 }
+
+// Set the default value of the range, and also show the default value
+document.querySelector("#formControlRange").value = 12;
+updateLength();
 
 // onchange updates the HTML when the slider is released. oninput updates as it's held down. Apparently oninput doesn't work on older versions of IE so I used both
 document.querySelector("#formControlRange").onchange = updateLength;
@@ -58,12 +58,10 @@ document.querySelector("#generate").onclick = function makePassword() {
     //     document.querySelector("#alertBox").remove();
     // }
 
-    // If no options are selected, show the alert box and end the function. Otherwise, hide the alert box.
+    // If no options are selected, show the alert box and end the function.
     if (allChars == "") {
         document.querySelector(".alert-danger").style = "display:block;"
         return;
-    } else {
-        document.querySelector(".alert-danger").style = "display:none;"
     }
 
     // newPass is written randomly one character at a time for the length desired, based on the array of desired characters allChars
@@ -86,8 +84,21 @@ document.querySelector("#generate").onclick = function makePassword() {
 // }
 
 // When the Copy button is clicked, sends the password in the text box to the clipboard
-document.querySelector("#copy").onclick = function copyClip() {
+function copyClip() {
     getPass.select();
     getPass.setSelectionRange(0, document.querySelector("#formControlRange").value);
     document.execCommand("copy");
 }
+
+document.querySelector("#copy").addEventListener("click", copyClip);
+
+// Hides the alert box...
+function hideAlert() {
+    document.querySelector(".alert-danger").style = "display:none;"
+}
+
+// ...Whenever the user picks one of the password options
+document.querySelector("#chooseLower").addEventListener("click", hideAlert);
+document.querySelector("#chooseUpper").addEventListener("click", hideAlert);
+document.querySelector("#chooseNums").addEventListener("click", hideAlert);
+document.querySelector("#chooseSymb").addEventListener("click", hideAlert);
